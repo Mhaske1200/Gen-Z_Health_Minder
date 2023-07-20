@@ -7,7 +7,7 @@ from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
 
-os.environ['OPENAI_API_KEY'] = apikey
+#os.environ['OPENAI_API_KEY'] = apikey
 
 # App framework
 st.title('☮️♻️ Gen-Z Health Minder 🏋🏻‍♂️🥗')
@@ -21,6 +21,7 @@ llm = OpenAI(temperature=0.9)
 
 
 def get_user_input():
+    apikey = st.text_input("Enter API KEY - ")
     age = st.number_input("Age", min_value=18, max_value=65, value=25)
     gender = st.radio("Gender", ["Male", "Female", "Other"])
     height = st.number_input("Height (in cm)", min_value=100, max_value=300, value=175)
@@ -43,6 +44,7 @@ def get_user_input():
     obs_consequence = st.radio("Observed Negative Consequences for Coworkers with Mental Health Conditions?",
                                ["Yes", "No"])
 
+    os.environ['OPENAI_API_KEY'] = apikey
     # Return the user input as a dictionary
     user_input = {
         "Age": age,
