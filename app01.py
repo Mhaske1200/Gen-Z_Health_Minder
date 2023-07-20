@@ -87,6 +87,6 @@ print(generated_promp)
 if st.button("Submit"):
     # Generate the response here
     st.subheader("Response:")
-    st.write(generated_promp)
+    #st.write(generated_promp)
     response=llm(generated_promp)
     st.write(response)
