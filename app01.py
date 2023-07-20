@@ -6,6 +6,8 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
+# Llms
+llm = OpenAI(temperature=0.9)
 
 #os.environ['OPENAI_API_KEY'] = apikey
 
@@ -15,13 +17,13 @@ st.title('☮️♻️ Gen-Z Health Minder 🏋🏻‍♂️🥗')
 st.title("Employee Mental Health Data")
 st.write("Enter the following information:")
 
-# Llms
-llm = OpenAI(temperature=0.9)
+
 
 
 
 def get_user_input():
     apikey = st.text_input("Enter API KEY - ")
+    os.environ['OPENAI_API_KEY'] = apikey
     age = st.number_input("Age", min_value=18, max_value=65, value=25)
     gender = st.radio("Gender", ["Male", "Female", "Other"])
     height = st.number_input("Height (in cm)", min_value=100, max_value=300, value=175)
@@ -44,7 +46,7 @@ def get_user_input():
     obs_consequence = st.radio("Observed Negative Consequences for Coworkers with Mental Health Conditions?",
                                ["Yes", "No"])
 
-    os.environ['OPENAI_API_KEY'] = apikey
+    
     # Return the user input as a dictionary
     user_input = {
         "Age": age,
