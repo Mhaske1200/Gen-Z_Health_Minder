@@ -1,5 +1,5 @@
 import os
-#from apikey import apikey
+from apikey import apikey
 import streamlit as st
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
@@ -8,8 +8,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
 # Llms
 llm = OpenAI(temperature=0.9)
-
-#os.environ['OPENAI_API_KEY'] = apikey
+os.environ['OPENAI_API_KEY'] = apikey
 
 # App framework
 st.title('☮️♻️ Gen-Z Health Minder 🏋🏻‍♂️🥗')
@@ -22,8 +21,6 @@ st.write("Enter the following information:")
 
 
 def get_user_input():
-    apikey = st.text_input("Enter API KEY - ")
-    os.environ['OPENAI_API_KEY'] = apikey
     age = st.number_input("Age", min_value=18, max_value=65, value=25)
     gender = st.radio("Gender", ["Male", "Female", "Other"])
     height = st.number_input("Height (in cm)", min_value=100, max_value=300, value=175)
