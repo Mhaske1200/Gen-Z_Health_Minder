@@ -10,7 +10,7 @@ from langchain.utilities import WikipediaAPIWrapper
 os.environ['OPENAI_API_KEY'] = apikey
 
 # App framework
-st.title('🏃🏻‍♂️💨 Gen-Z Health Minder')
+st.title('☮️♻️ Gen-Z Health Minder 🏋🏻‍♂️🥗')
 
 st.title("Employee Mental Health Data")
 st.write("Enter the following information:")
